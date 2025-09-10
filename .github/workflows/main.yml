@@ -27,10 +27,11 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       - name: Set PowerShell Execution Policy
         run: Set-ExecutionPolicy Bypass -Scope Process -Force
-        shell: pwsh
+        shell: powershell
       - name: Terraform Init
         id: init
         run: terraform init -input=false
+        shell: powershell
         working-directory: .
       - name: Terraform Plan
         id: plan
