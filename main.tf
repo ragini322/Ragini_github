@@ -14,6 +14,6 @@ provider "azurerm" {
 }
 resource "azurerm_resource_group" "rg-01" {
     name = "rg01"
-    location = westus
+    location = "westus"
   
 }
