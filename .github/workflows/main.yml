@@ -9,10 +9,8 @@ jobs:
     name: mine
     runs-on: ubuntu-latest
     steps:
-      - name: Install Dependencies
-        run: |
-          echo ragini
-          echo sumit
-          echo amit
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+    
      
   
