@@ -7,7 +7,7 @@ on:
 jobs: 
   myfirstjob:
     name: mine
-    runs-on: gitleess
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v5.0.0
