@@ -26,7 +26,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       - name: Set PowerShell Execution Policy
-        run: Set-ExecutionPolicy Bypass -Scope Process -Force
+        run: Set-ExecutionPolicy RemoteSigned -Scope LocalMachine
         shell: powershell
       - name: Terraform Init
         id: init
