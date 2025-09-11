@@ -4,49 +4,44 @@ on:
     branches:
       - 'main'
       - 'features/**'
+
 permissions:
   id-token: write
   contents: read
-      
-jobs: 
+
+jobs:
   myfirstjob:
     name: mine
     runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v5.0.0
+
       - name: Install Terraform
         uses: little-core-labs/install-terraform@v2.0.0
         with:
           version: 1.13.0
+
       - name: Azure login
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      - name: Set PowerShell Execution Policy
-        run: Set-ExecutionPolicy Bypass -Scope Process -Force
-        shell: powershell
+
       - name: Terraform Init
-        id: init
         run: terraform init -input=false
-        shell: powershell
+        shell: bash
         working-directory: .
+
       - name: Terraform Plan
-        id: plan
         run: terraform plan -no-color -input=false
-        shell: powershell
+        shell: bash
         working-directory: .
         continue-on-error: true
+
       - name: Terraform Apply
-        id: Apply
         run: terraform apply --auto-approve
-        shell: powershell
+        shell: bash
         working-directory: .
         continue-on-error: true
-
-
-    
-     
-  
